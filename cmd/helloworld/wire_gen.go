@@ -10,8 +10,10 @@ import (
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
 	"helloworld/internal/biz"
+	demo2 "helloworld/internal/biz/demo"
 	"helloworld/internal/conf"
 	"helloworld/internal/data"
+	"helloworld/internal/data/demo"
 	"helloworld/internal/server"
 	"helloworld/internal/service"
 )
@@ -31,7 +33,10 @@ func wireApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*
 	greeterRepo := data.NewGreeterRepo(dataData, logger)
 	greeterUsecase := biz.NewGreeterUsecase(greeterRepo, logger)
 	greeterService := service.NewGreeterService(greeterUsecase)
-	grpcServer := server.NewGRPCServer(confServer, greeterService, logger)
+	demoRepo := demo.NewDemoRepo()
+	demoUseCase := demo2.NewDemoUseCase(demoRepo)
+	demoService := service.NewDemoService(greeterUsecase, demoUseCase)
+	grpcServer := server.NewGRPCServer(confServer, greeterService, demoService, logger)
 	httpServer := server.NewHTTPServer(confServer, greeterService, logger)
 	app := newApp(logger, grpcServer, httpServer)
 	return app, func() {

@@ -9,7 +9,7 @@ import (
 )
 
 type DemoService struct {
-	v1.UnimplementedGreeterServer
+	v1.UnimplementedDemoServer
 
 	uc  *biz.GreeterUsecase
 	duc *demo.DemoUseCase
