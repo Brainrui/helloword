@@ -1,11 +1,10 @@
 package data
 
 import (
-	"helloworld/internal/conf"
-	"helloworld/internal/data/demo"
-
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/google/wire"
+	"helloworld/internal/conf"
+	"helloworld/internal/data/demo"
 )
 
 // ProviderSet is data providers.
