@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package helloworld.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "helloworld/api/helloworld/v1;v1";
+option java_multiple_files = true;
+option java_package = "dev.kratos.api.helloworld.v1";
+option java_outer_classname = "HelloworldProtoV1";
+
+message Trades {
+  int32 id = 1;
+  string name = 2;
+}
+
+service Demo {
+  rpc SayDemo (Trades) returns (Trades) {
+    option (google.api.http) = {
+      get: "/trades/{id}"
+    };
+  }
+}
