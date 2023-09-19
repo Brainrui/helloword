@@ -17,17 +17,17 @@ type DemoRepo interface {
 	GetDemo(ctx context.Context, conds map[string]interface{}) (*Demo, error)
 }
 
-type DemoCase struct {
+type DemoUseCase struct {
 	di DemoRepo
 }
 
-func NewDemoCase(di DemoRepo) *DemoCase {
-	return &DemoCase{
+func NewDemoUseCase(di DemoRepo) *DemoUseCase {
+	return &DemoUseCase{
 		di: di,
 	}
 }
 
-func (dc *DemoCase) GetTrades(ctx context.Context) (*Demo, error) {
+func (dc *DemoUseCase) GetTrades(ctx context.Context) (*Demo, error) {
 	data, err := dc.di.GetDemo(ctx, nil)
 	if err != nil {
 		fmt.Println("this is a error")

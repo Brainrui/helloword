@@ -5,13 +5,13 @@ import (
 	"helloworld/internal/biz/demo"
 )
 
-type DemoImpl struct {
+type DemoRepo struct {
 }
 
-func NewDemoImpl() demo.DemoRepo {
-	return &DemoImpl{}
+func NewDemoRepo() demo.DemoRepo {
+	return &DemoRepo{}
 }
 
-func (di *DemoImpl) GetDemo(ctx context.Context, conds map[string]interface{}) (*demo.Demo, error) {
+func (di *DemoRepo) GetDemo(ctx context.Context, conds map[string]interface{}) (*demo.Demo, error) {
 	return &demo.Demo{ID: 1}, nil
 }

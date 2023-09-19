@@ -12,10 +12,10 @@ type DemoService struct {
 	v1.UnimplementedGreeterServer
 
 	uc  *biz.GreeterUsecase
-	duc *demo.DemoCase
+	duc *demo.DemoUseCase
 }
 
-func NewDemoService(uc *biz.GreeterUsecase, duc *demo.DemoCase) *DemoService {
+func NewDemoService(uc *biz.GreeterUsecase, duc *demo.DemoUseCase) *DemoService {
 	return &DemoService{
 		uc:  uc,
 		duc: duc,
